@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rock Paper Scissors - Esteban Moroy</title>
+  </head>
+  <script>
+    //"✌👊🤚"
+    function computerPlay() {
+      let randomValue = Math.floor(Math.random() * 3 + 1);
+      switch (randomValue) {
+        case 1:
+          return Rock;
+          break;
+        case 2:
+          return Paper;
+          break;
+        case 3:
+          return Scissors;
+          break;
+        default:
+          break;
+      }
+    }
+    function playRound(playerSelection, computerSelection) {
+      switch (playerSelection) {
+        case Rock:
+          switch (computerSelection) {
+            case Rock:
+              return "You tie, both selected Rock 😒";
+              break;
+            case Paper:
+              return "You lost, Paper beats Rock 😩";
+              break;
+            case Scissors:
+              return "You win, Rock beats Scissors 🎉";
+              break;
+          }
+        case Paper:
+          switch (computerSelection) {
+            case Rock:
+              return "You win, Paper beats Rock 🎉";
+              break;
+            case Paper:
+              return "You tie, both selected Paper 😒";
+              break;
+            case Scissors:
+              return "You lost, Scissors beats Paper 😩";
+              break;
+          }
+        case Scissors:
+          switch (computerSelection) {
+            case Rock:
+              return "You lost, Rock beats Scissors 😩";
+              break;
+            case Paper:
+              return "You win, Scissors beats Paper 🎉";
+              break;
+            case Scissors:
+              return "You tie, both selected Scissors 😒";
+              break;
+          }
+      }
+    }
+  </script>
+  <body></body>
+</html>
