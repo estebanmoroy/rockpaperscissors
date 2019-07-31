@@ -10,57 +10,87 @@
       let randomValue = Math.floor(Math.random() * 3 + 1);
       switch (randomValue) {
         case 1:
-          return Rock;
+          return "rock";
           break;
         case 2:
-          return Paper;
+          return "paper";
           break;
         case 3:
-          return Scissors;
-          break;
-        default:
+          return "scissors";
           break;
       }
     }
+
     function playRound(playerSelection, computerSelection) {
-      switch (playerSelection) {
-        case Rock:
+      let input = playerSelection.toLowerCase();
+      switch (input) {
+        case "rock":
           switch (computerSelection) {
-            case Rock:
+            case "rock":
               return "You tie, both selected Rock 😒";
               break;
-            case Paper:
+            case "paper":
               return "You lost, Paper beats Rock 😩";
               break;
-            case Scissors:
+            case "scissors":
               return "You win, Rock beats Scissors 🎉";
               break;
           }
-        case Paper:
+        case "paper":
           switch (computerSelection) {
-            case Rock:
+            case "rock":
               return "You win, Paper beats Rock 🎉";
               break;
-            case Paper:
+            case "paper":
               return "You tie, both selected Paper 😒";
               break;
-            case Scissors:
+            case "scissors":
               return "You lost, Scissors beats Paper 😩";
               break;
           }
-        case Scissors:
+        case "scissors":
           switch (computerSelection) {
-            case Rock:
+            case "rock":
               return "You lost, Rock beats Scissors 😩";
               break;
-            case Paper:
+            case "paper":
               return "You win, Scissors beats Paper 🎉";
               break;
-            case Scissors:
+            case "scissors":
               return "You tie, both selected Scissors 😒";
               break;
           }
       }
+    }
+
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;
+      for (let i = 0; i < 5; i++) {
+        let roundResult = playRound(prompt("Enter your play:"), computerPlay());
+        console.log(roundResult);
+        roundResult = roundResult.slice(4, 5);
+        switch (roundResult) {
+          case "w":
+            playerScore++;
+            break;
+          case "t":
+            break;
+          case "l":
+            computerScore++;
+            break;
+        }
+      }
+      let finalScore =
+        "The final score is " + playerScore + "-" + computerScore + ". ";
+      if (playerScore > computerScore) {
+        finalScore += "You won! 🎉";
+      } else if (playerScore === computerScore) {
+        finalScore += "You tie 😒";
+      } else {
+        finalScore += "You lost 😩";
+      }
+      return finalScore;
     }
   </script>
   <body></body>
