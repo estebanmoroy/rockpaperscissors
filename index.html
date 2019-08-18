@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <title>Rock Paper Scissors - Esteban Moroy</title>
   </head>
+
+  <body>
+    <button id="rock">👊 Rock</button>
+    <button id="paper">🤚 Paper</button>
+    <button id="scissors">✌ Scissors</button>
+    <div id="display"></div>
+  </body>
+
   <script>
     //"✌👊🤚"
     function computerPlay() {
@@ -63,35 +71,13 @@
       }
     }
 
-    function game() {
-      let playerScore = 0;
-      let computerScore = 0;
-      for (let i = 0; i < 5; i++) {
-        let roundResult = playRound(prompt("Enter your play:"), computerPlay());
-        console.log(roundResult);
-        roundResult = roundResult.slice(4, 5);
-        switch (roundResult) {
-          case "w":
-            playerScore++;
-            break;
-          case "t":
-            break;
-          case "l":
-            computerScore++;
-            break;
-        }
-      }
-      let finalScore =
-        "The final score is " + playerScore + "-" + computerScore + ". ";
-      if (playerScore > computerScore) {
-        finalScore += "You won! 🎉";
-      } else if (playerScore === computerScore) {
-        finalScore += "You tie 😒";
-      } else {
-        finalScore += "You lost 😩";
-      }
-      return finalScore;
-    }
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const result = playRound(button.id.toString(), computerPlay());
+        const divDisplay = document.querySelector("#display");
+        divDisplay.textContent += result;
+      });
+    });
   </script>
-  <body></body>
 </html>
